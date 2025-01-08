@@ -1,0 +1,537 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>tarefa1_overleaf</title>
+<meta name="generator" content="MATLAB 24.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2025-01-08">
+<meta name="DC.source" content="tarefa1_overleaf.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">C&aacute;lculo de par&acirc;metros de um motor a jacto</a>
+</li>
+<li>
+<a href="#2">1) Defini&ccedil;&atilde;o dos par&acirc;metros e constantes</a>
+</li>
+<li>
+<a href="#3">2) Convers&atilde;o de unidades e c&aacute;lculo de calores espec&iacute;ficos</a>
+</li>
+<li>
+<a href="#4">3) Condi&ccedil;&otilde;es na entrada do motor (Ram Effect)</a>
+</li>
+<li>
+<a href="#5">4) C&aacute;lculo de P2, T2 isentr&oacute;pico e T2 real</a>
+</li>
+<li>
+<a href="#6">5) C&aacute;lculo das entalpias h1 e h2</a>
+</li>
+<li>
+<a href="#7">6) Balan&ccedil;o energ&eacute;tico do compressor</a>
+</li>
+<li>
+<a href="#8">7) Press&atilde;o na c&acirc;mara de combust&atilde;o</a>
+</li>
+<li>
+<a href="#9">8) Balan&ccedil;o energ&eacute;tico na turbina</a>
+</li>
+<li>
+<a href="#10">9) Nozzle (expans&atilde;o at&eacute; press&atilde;o ambiente)</a>
+</li>
+<li>
+<a href="#11">10) &Aacute;reas de entrada e de sa&iacute;da</a>
+</li>
+<li>
+<a href="#12">11) Empuxo (Thrust)</a>
+</li>
+<li>
+<a href="#13">12) Consumo Espec&iacute;fico de Combust&iacute;vel (TSFC)</a>
+</li>
+<li>
+<a href="#14">13) Apresenta&ccedil;&atilde;o dos resultados</a>
+</li>
+<li>
+<a href="#15">14) Gr&aacute;ficos em 4 subplots</a>
+</li>
+</ul>
+</div>
+<h2 id="1">C&aacute;lculo de par&acirc;metros de um motor a jacto</h2>
+<p>Este script calcula os principais par&acirc;metros (temperaturas, press&otilde;es, velocidades, empuxo e consumo espec&iacute;fico) de um motor a jacto idealizado. As descri&ccedil;&otilde;es de cada etapa de c&aacute;lculo est&atilde;o organizadas em sec&ccedil;&otilde;es.</p>
+<pre class="codeinput">clc
+close <span class="string">all</span>
+clearvars
+</pre>
+<h2 id="2">1) Defini&ccedil;&atilde;o dos par&acirc;metros e constantes</h2>
+<div>
+<ul>
+<li>RP = Raz&atilde;o de press&atilde;o do compressor</li>
+<li>mdot_ar = caudal m&aacute;ssico (kg/s)</li>
+<li>T3_C = Temperatura de combust&atilde;o em &ordm;C</li>
+<li>AF_racio = Raz&atilde;o ar/combust&iacute;vel</li>
+<li>V1_kmh = Velocidade de voo em km/h</li>
+<li>Ta_C = Temperatura ambiente em &ordm;C</li>
+<li>P1_bar = Press&atilde;o ambiente em bar</li>
+<li>eta_c = Rendimento (efici&ecirc;ncia) do compressor</li>
+<li>eta_t = Rendimento (efici&ecirc;ncia) da turbina</li>
+<li>gamma_frio e gamma_quente = Coeficientes adiab&aacute;ticos (ar frio e gases quentes)</li>
+<li>R = Constante dos gases (J/(kg&middot;K))</li>
+</ul>
+</div>
+<pre class="codeinput">RP = 3;
+mdot_ar = 2.0;
+T3_C = 990;
+AF_racio = 71.3;
+V1_kmh = 540;
+Ta_C = 25;
+P1_bar = 1;
+eta_c = 0.75;
+eta_t = 0.85;
+gamma_frio = 1.4;
+gamma_quente = 1.333;
+R = 287;
+</pre>
+<h2 id="3">2) Convers&atilde;o de unidades e c&aacute;lculo de calores espec&iacute;ficos</h2>
+<div>
+<ul>
+<li>Converte-se T3_C (&deg;C) para Kelvin: T3</li>
+<li>Calculam-se os calores espec&iacute;ficos a press&atilde;o constante do ar frio e dos gases quentes: cp_frio e cp_quente</li>
+</ul>
+</div>
+<pre class="codeinput">T3 = T3_C + 273.15;       <span class="comment">% Convers&atilde;o de &ordm;C para K</span>
+cp_frio = (gamma_frio * R) / (gamma_frio - 1);
+cp_quente = (gamma_quente * R) / (gamma_quente - 1);
+</pre>
+<h2 id="4">3) Condi&ccedil;&otilde;es na entrada do motor (Ram Effect)</h2>
+<div>
+<ul>
+<li>Converte-se V1_kmh (km/h) para m/s: V1</li>
+<li>Converte-se Ta_C (&deg;C) para K: Ta</li>
+<li>Converte-se P1_bar (bar) para Pa: Pa</li>
+<li>Calcula-se T1, considerando a compress&atilde;o din&acirc;mica (ram effect)</li>
+<li>Calcula-se P1, assumindo processo quase isentr&oacute;pico</li>
+</ul>
+</div>
+<pre class="codeinput">V1 = V1_kmh * 1000 / 3600;  <span class="comment">% km/h para m/s</span>
+Ta = Ta_C + 273.15;         <span class="comment">% &ordm;C para K</span>
+Pa = P1_bar * 1e5;          <span class="comment">% bar para Pa</span>
+T1 = Ta + (V1^2 / (2 * cp_frio));
+P1 = Pa * (T1 / Ta)^(gamma_frio / (gamma_frio - 1));
+</pre>
+<h2 id="5">4) C&aacute;lculo de P2, T2 isentr&oacute;pico e T2 real</h2>
+<div>
+<ul>
+<li>P2 = P1 * RP</li>
+<li></li>
+<li>T2 = Temperatura real (considerando o rendimento do compressor, eta_c)</li>
+<li>V2 = Velocidade ap&oacute;s o compressor</li>
+</ul>
+</div>
+<pre class="codeinput">P2 = P1 * RP;
+T2s = T1 * (P2 / P1)^((gamma_frio - 1) / gamma_frio);
+T2 = T1 + (T2s - T1) / eta_c;
+V2 = sqrt(V1^2 + 2 * cp_frio * (T2 - T1));
+</pre>
+<h2 id="6">5) C&aacute;lculo das entalpias h1 e h2</h2>
+<p>As entalpias s&atilde;o dadas por: h1r = cp_frio * T1 h2r = cp_frio * T2 N&atilde;o se adiciona a componente cin&eacute;tica neste termo (meia velocidade ao quadrado), pois &eacute; tratada separadamente.</p>
+<pre class="codeinput">h1r = cp_frio * T1;
+h2r = cp_frio * T2;
+</pre>
+<h2 id="7">6) Balan&ccedil;o energ&eacute;tico do compressor</h2>
+<p>O trabalho consumido pelo compressor &eacute;: W_dot_c = - (mdot_ar * (h1r - h2r)) Sinal negativo indica que o sistema (ar) recebe trabalho do exterior.</p>
+<pre class="codeinput">W_dot_c = -(mdot_ar * (h1r - h2r));
+</pre>
+<h2 id="8">7) Press&atilde;o na c&acirc;mara de combust&atilde;o</h2>
+<p>Admite-se perda de carga desprez&aacute;vel na c&acirc;mara de combust&atilde;o. Logo: P3 = P2</p>
+<pre class="codeinput">P3 = P2;
+</pre>
+<h2 id="9">8) Balan&ccedil;o energ&eacute;tico na turbina</h2>
+<p>A turbina fornece o trabalho necess&aacute;rio ao compressor (em regime estacion&aacute;rio): W_dot_t = W_dot_c A temperatura de sa&iacute;da T4 resulta da subtrac&ccedil;&atilde;o do trabalho espec&iacute;fico transformado em varia&ccedil;&atilde;o de entalpia. Calcula-se tamb&eacute;m T4s (isentropicamente) e a press&atilde;o P4.</p>
+<pre class="codeinput">W_dot_t = W_dot_c;
+T4 = T3 - W_dot_t / (mdot_ar * cp_quente);
+T4s = T3 + (T4 - T3) / eta_t;
+P4 = P3 * (T4s / T3)^(gamma_quente / (gamma_quente - 1));
+</pre>
+<h2 id="10">9) Nozzle (expans&atilde;o at&eacute; press&atilde;o ambiente)</h2>
+<p>Expans&atilde;o dos gases de P4 at&eacute; Pa. A temperatura final T5 &eacute; calculada isentropicamente: T5 = T4 * (P5 / P4)^((gamma_quente - 1)/gamma_quente) A velocidade de sa&iacute;da V5 &eacute; obtida pela diferen&ccedil;a de entalpia convertida em energia cin&eacute;tica.</p>
+<pre class="codeinput">V4 = 0;      <span class="comment">% Supondo velocidade nula &agrave; sa&iacute;da da turbina (para simplificar)</span>
+P5 = Pa;
+T5 = T4 * (P5 / P4)^((gamma_quente - 1) / gamma_quente);
+V5 = sqrt(V4^2 + 2 * cp_quente * (T4 - T5));
+</pre>
+<h2 id="11">10) &Aacute;reas de entrada e de sa&iacute;da</h2>
+<div>
+<ul>
+<li>rho1 = Pa / (R * Ta)</li>
+<li>A1 = mdot_ar / (rho1 * V1)</li>
+<li>rho_5 = P5 / (R * T5)</li>
+<li>A5 = mdot_ar / (rho_5 * V5)</li>
+</ul>
+</div>
+<pre class="codeinput">rho1 = Pa / (R * Ta);
+A1 = mdot_ar / (rho1 * V1);
+rho_5 = P5 / (R * T5);
+A5 = mdot_ar / (rho_5 * V5);
+</pre>
+<h2 id="12">11) Empuxo (Thrust)</h2>
+<pre class="language-matlab">Thrust = mdot_ar * (V5 - V1)
+</pre>
+<pre class="codeinput">Thrust = mdot_ar * (V5 - V1);
+</pre>
+<h2 id="13">12) Consumo Espec&iacute;fico de Combust&iacute;vel (TSFC)</h2>
+<pre class="language-matlab">mdot_combustivel = mdot_ar / AF_racio
+TSFC = mdot_combustivel / Thrust
+</pre>
+<pre class="codeinput">mdot_combustivel = mdot_ar / AF_racio;
+TSFC = mdot_combustivel / Thrust;
+</pre>
+<h2 id="14">13) Apresenta&ccedil;&atilde;o dos resultados</h2>
+<p>Os principais resultados s&atilde;o mostrados no <b>Command Window</b>.</p>
+<pre class="codeinput">fprintf(<span class="string">'Temperatura est&aacute;tica &agrave; sa&iacute;da do nozzle (T5): %.2f K\n'</span>, T5);
+fprintf(<span class="string">'Velocidade do jacto &agrave; sa&iacute;da do nozzle (V5): %.2f m/s\n'</span>, V5);
+fprintf(<span class="string">'&Aacute;rea de entrada do motor (A1): %.4f m&sup2;\n'</span>, A1);
+fprintf(<span class="string">'&Aacute;rea de sa&iacute;da do motor (A5): %.4f m&sup2;\n'</span>, A5);
+fprintf(<span class="string">'Empuxo (Thrust): %.2f N\n'</span>, Thrust);
+fprintf(<span class="string">'Consumo espec&iacute;fico de combust&iacute;vel (TSFC): %.2e kg/(N&middot;s)\n'</span>, TSFC);
+</pre>
+<pre class="codeoutput">Temperatura est&aacute;tica &agrave; sa&iacute;da do nozzle (T5): 949.24 K
+Velocidade do jacto &agrave; sa&iacute;da do nozzle (V5): 644.77 m/s
+&Aacute;rea de entrada do motor (A1): 0.0114 m&sup2;
+&Aacute;rea de sa&iacute;da do motor (A5): 0.0085 m&sup2;
+Empuxo (Thrust): 989.55 N
+Consumo espec&iacute;fico de combust&iacute;vel (TSFC): 2.83e-05 kg/(N&middot;s)
+</pre>
+<h2 id="15">14) Gr&aacute;ficos em 4 subplots</h2>
+<p>1. Varia&ccedil;&atilde;o de Temperatura: T1, T2, T3, T4, T5 2. Varia&ccedil;&atilde;o de Press&atilde;o: P1, P2, P3, P4, P5 3. Varia&ccedil;&atilde;o de Velocidades: V1, V2, V4, V5 4. Empuxo (Thrust), representado como uma barra &uacute;nica</p>
+<pre class="codeinput">T_array = [T1, T2, T3, T4, T5];
+P_array = [P1, P2, P3, P4, P5];
+Velocidades = [V1, V2, V4, V5];
+
+figure(<span class="string">'Name'</span>,<span class="string">'Par&acirc;metros Principais do Motor a Jacto'</span>,<span class="string">'NumberTitle'</span>,<span class="string">'off'</span>);
+
+<span class="comment">% Subplot 1: Temperatura</span>
+subplot(2,2,1)
+plot(1:5, T_array, <span class="string">'-o'</span>,<span class="string">'LineWidth'</span>,1.5,<span class="string">'MarkerSize'</span>,6)
+title(<span class="string">'Varia&ccedil;&atilde;o de Temperatura'</span>)
+xlabel(<span class="string">'Estados do escoamento'</span>)
+ylabel(<span class="string">'Temperatura [K]'</span>)
+xticks(1:5)
+grid <span class="string">on</span>
+
+<span class="comment">% Subplot 2: Press&atilde;o</span>
+subplot(2,2,2)
+plot(1:5, P_array, <span class="string">'-o'</span>,<span class="string">'LineWidth'</span>,1.5,<span class="string">'MarkerSize'</span>,6)
+title(<span class="string">'Varia&ccedil;&atilde;o de Press&atilde;o'</span>)
+xlabel(<span class="string">'Estados do escoamento'</span>)
+ylabel(<span class="string">'Press&atilde;o [Pa]'</span>)
+xticks(1:5)
+grid <span class="string">on</span>
+
+<span class="comment">% Subplot 3: Velocidade</span>
+subplot(2,2,3)
+plot(1:length(Velocidades), Velocidades, <span class="string">'-s'</span>,<span class="string">'LineWidth'</span>,1.5,<span class="string">'MarkerSize'</span>,6)
+title(<span class="string">'Varia&ccedil;&atilde;o de Velocidade'</span>)
+xlabel(<span class="string">'Pontos de velocidade'</span>)
+ylabel(<span class="string">'Velocidade [m/s]'</span>)
+xticks(1:4)
+xticklabels({<span class="string">'V1'</span>,<span class="string">'V2'</span>,<span class="string">'V4'</span>,<span class="string">'V5'</span>})
+grid <span class="string">on</span>
+
+
+sgtitle(<span class="string">'Resultados Principais do Motor a Jacto'</span>)
+</pre>
+<img vspace="5" hspace="5" src="tarefa1_overleaf_01.png" alt=""> <p>Observa-se que a temperatura alcan&ccedil;a o seu valor m&aacute;ximo na c&acirc;mara de combust&atilde;o (T3) e diminui ao passar pela turbina (T4), enquanto a press&atilde;o &eacute; elevada pelo compressor (P2) e depois reduzida at&eacute; pr&oacute;ximo da press&atilde;o ambiente no nozzle (P5). Nas velocidades, nota-se que o escoamento acelera significativamente at&eacute; &agrave; sa&iacute;da (V5). Finalmente, o empuxo (Thrust) quantifica a for&ccedil;a de propuls&atilde;o gerada pelo motor.</p>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Cálculo de parâmetros de um motor a jacto
+%
+% Este script calcula os principais parâmetros (temperaturas, pressões,
+% velocidades, empuxo e consumo específico) de um motor a jacto idealizado.
+% As descrições de cada etapa de cálculo estão organizadas em secções.
+
+clc
+close all
+clearvars
+
+%% 1) Definição dos parâmetros e constantes
+%
+% * RP = Razão de pressão do compressor  
+% * mdot_ar = caudal mássico (kg/s)  
+% * T3_C = Temperatura de combustão em ºC  
+% * AF_racio = Razão ar/combustível  
+% * V1_kmh = Velocidade de voo em km/h  
+% * Ta_C = Temperatura ambiente em ºC  
+% * P1_bar = Pressão ambiente em bar  
+% * eta_c = Rendimento (eficiência) do compressor  
+% * eta_t = Rendimento (eficiência) da turbina  
+% * gamma_frio e gamma_quente = Coeficientes adiabáticos (ar frio e gases quentes)  
+% * R = Constante dos gases (J/(kg·K))  
+
+RP = 3;
+mdot_ar = 2.0;
+T3_C = 990;
+AF_racio = 71.3;
+V1_kmh = 540;
+Ta_C = 25;
+P1_bar = 1;
+eta_c = 0.75;
+eta_t = 0.85;
+gamma_frio = 1.4;
+gamma_quente = 1.333;
+R = 287;
+
+%% 2) Conversão de unidades e cálculo de calores específicos
+%
+% * Converte-se T3_C (°C) para Kelvin: T3  
+% * Calculam-se os calores específicos a pressão constante do ar frio e
+%   dos gases quentes: cp_frio e cp_quente
+
+T3 = T3_C + 273.15;       % Conversão de ºC para K
+cp_frio = (gamma_frio * R) / (gamma_frio - 1);
+cp_quente = (gamma_quente * R) / (gamma_quente - 1);
+
+%% 3) Condições na entrada do motor (Ram Effect)
+%
+% * Converte-se V1_kmh (km/h) para m/s: V1  
+% * Converte-se Ta_C (°C) para K: Ta  
+% * Converte-se P1_bar (bar) para Pa: Pa  
+% * Calcula-se T1, considerando a compressão dinâmica (ram effect)  
+% * Calcula-se P1, assumindo processo quase isentrópico  
+
+V1 = V1_kmh * 1000 / 3600;  % km/h para m/s
+Ta = Ta_C + 273.15;         % ºC para K
+Pa = P1_bar * 1e5;          % bar para Pa
+T1 = Ta + (V1^2 / (2 * cp_frio));
+P1 = Pa * (T1 / Ta)^(gamma_frio / (gamma_frio - 1));
+
+%% 4) Cálculo de P2, T2 isentrópico e T2 real
+%
+% * P2 = P1 * RP  
+% * T2_s = Temperatura isentrópica à saída do compressor  
+% * T2 = Temperatura real (considerando o rendimento do compressor, eta_c)  
+% * V2 = Velocidade após o compressor  
+
+P2 = P1 * RP;
+T2s = T1 * (P2 / P1)^((gamma_frio - 1) / gamma_frio);
+T2 = T1 + (T2s - T1) / eta_c;
+V2 = sqrt(V1^2 + 2 * cp_frio * (T2 - T1));
+
+%% 5) Cálculo das entalpias h1 e h2
+%
+% As entalpias são dadas por:
+%   h1r = cp_frio * T1
+%   h2r = cp_frio * T2
+% Não se adiciona a componente cinética neste termo (meia velocidade ao quadrado),
+% pois é tratada separadamente.
+
+h1r = cp_frio * T1;
+h2r = cp_frio * T2;
+
+%% 6) Balanço energético do compressor
+%
+% O trabalho consumido pelo compressor é:
+%   W_dot_c = - (mdot_ar * (h1r - h2r))
+% Sinal negativo indica que o sistema (ar) recebe trabalho do exterior.
+
+W_dot_c = -(mdot_ar * (h1r - h2r));
+
+%% 7) Pressão na câmara de combustão
+%
+% Admite-se perda de carga desprezável na câmara de combustão. Logo:
+%   P3 = P2
+
+P3 = P2;
+
+%% 8) Balanço energético na turbina
+%
+% A turbina fornece o trabalho necessário ao compressor (em regime estacionário):
+%   W_dot_t = W_dot_c
+% A temperatura de saída T4 resulta da subtracção do trabalho específico
+% transformado em variação de entalpia. Calcula-se também T4s (isentropicamente)
+% e a pressão P4.
+
+W_dot_t = W_dot_c;
+T4 = T3 - W_dot_t / (mdot_ar * cp_quente);
+T4s = T3 + (T4 - T3) / eta_t;
+P4 = P3 * (T4s / T3)^(gamma_quente / (gamma_quente - 1));
+
+%% 9) Nozzle (expansão até pressão ambiente)
+%
+% Expansão dos gases de P4 até Pa. A temperatura final T5 é calculada isentropicamente:
+%   T5 = T4 * (P5 / P4)^((gamma_quente - 1)/gamma_quente)
+% A velocidade de saída V5 é obtida pela diferença de entalpia convertida em energia cinética.
+
+V4 = 0;      % Supondo velocidade nula à saída da turbina (para simplificar)
+P5 = Pa;
+T5 = T4 * (P5 / P4)^((gamma_quente - 1) / gamma_quente);
+V5 = sqrt(V4^2 + 2 * cp_quente * (T4 - T5));
+
+%% 10) Áreas de entrada e de saída
+%
+% * rho1 = Pa / (R * Ta)  
+% * A1 = mdot_ar / (rho1 * V1)  
+% * rho_5 = P5 / (R * T5)  
+% * A5 = mdot_ar / (rho_5 * V5)
+
+rho1 = Pa / (R * Ta);
+A1 = mdot_ar / (rho1 * V1);
+rho_5 = P5 / (R * T5);
+A5 = mdot_ar / (rho_5 * V5);
+
+%% 11) Empuxo (Thrust)
+%
+%   Thrust = mdot_ar * (V5 - V1)
+
+Thrust = mdot_ar * (V5 - V1);
+
+%% 12) Consumo Específico de Combustível (TSFC)
+%
+%   mdot_combustivel = mdot_ar / AF_racio
+%   TSFC = mdot_combustivel / Thrust
+
+mdot_combustivel = mdot_ar / AF_racio;
+TSFC = mdot_combustivel / Thrust;
+
+%% 13) Apresentação dos resultados
+%
+% Os principais resultados são mostrados no *Command Window*.
+
+fprintf('Temperatura estática à saída do nozzle (T5): %.2f K\n', T5);
+fprintf('Velocidade do jacto à saída do nozzle (V5): %.2f m/s\n', V5);
+fprintf('Área de entrada do motor (A1): %.4f m²\n', A1);
+fprintf('Área de saída do motor (A5): %.4f m²\n', A5);
+fprintf('Empuxo (Thrust): %.2f N\n', Thrust);
+fprintf('Consumo específico de combustível (TSFC): %.2e kg/(N·s)\n', TSFC);
+
+%% 14) Gráficos em 4 subplots
+%
+% 1. Variação de Temperatura: T1, T2, T3, T4, T5  
+% 2. Variação de Pressão: P1, P2, P3, P4, P5  
+% 3. Variação de Velocidades: V1, V2, V4, V5  
+% 4. Empuxo (Thrust), representado como uma barra única
+
+T_array = [T1, T2, T3, T4, T5];
+P_array = [P1, P2, P3, P4, P5];
+Velocidades = [V1, V2, V4, V5];
+
+figure('Name','Parâmetros Principais do Motor a Jacto','NumberTitle','off');
+
+% Subplot 1: Temperatura
+subplot(2,2,1)
+plot(1:5, T_array, '-o','LineWidth',1.5,'MarkerSize',6)
+title('Variação de Temperatura')
+xlabel('Estados do escoamento')
+ylabel('Temperatura [K]')
+xticks(1:5)
+grid on
+
+% Subplot 2: Pressão
+subplot(2,2,2)
+plot(1:5, P_array, '-o','LineWidth',1.5,'MarkerSize',6)
+title('Variação de Pressão')
+xlabel('Estados do escoamento')
+ylabel('Pressão [Pa]')
+xticks(1:5)
+grid on
+
+% Subplot 3: Velocidade
+subplot(2,2,3)
+plot(1:length(Velocidades), Velocidades, '-s','LineWidth',1.5,'MarkerSize',6)
+title('Variação de Velocidade')
+xlabel('Pontos de velocidade')
+ylabel('Velocidade [m/s]')
+xticks(1:4)
+xticklabels({'V1','V2','V4','V5'})
+grid on
+
+
+sgtitle('Resultados Principais do Motor a Jacto')
+
+%%
+% Observa-se que a temperatura alcança o seu valor máximo na câmara de
+% combustão (T3) e diminui ao passar pela turbina (T4), enquanto a
+% pressão é elevada pelo compressor (P2) e depois reduzida até próximo
+% da pressão ambiente no nozzle (P5). Nas velocidades, nota-se que o
+% escoamento acelera significativamente até à saída (V5). Finalmente,
+% o empuxo (Thrust) quantifica a força de propulsão gerada pelo motor.
+
+##### SOURCE END #####
+-->
+</body>
+</html>
